@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="RIDER_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$/../.gitignore">
+      <sourceFolder url="file://$MODULE_DIR$/../.gitignore" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../tdumt-app_2.0/Scripts/package.cmd">
+      <sourceFolder url="file://$MODULE_DIR$/../tdumt-app_2.0/Scripts/package.cmd" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../tdumt-app_2.0/TDUMT_2_Main/app.config">
+      <sourceFolder url="file://$MODULE_DIR$/../tdumt-app_2.0/TDUMT_2_Main/app.config" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../tdumt-app_2.0/TDUMT_2_Main/bin/Debug/Conf/log4net.xml">
+      <sourceFolder url="file://$MODULE_DIR$/../tdumt-app_2.0/TDUMT_2_Main/bin/Debug/Conf/log4net.xml" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../tdumt-app_2.0/TDUMT_2_MiniXmb/bin/Debug/Logs/ModdingLib.log">
+      <sourceFolder url="file://$MODULE_DIR$/../tdumt-app_2.0/TDUMT_2_MiniXmb/bin/Debug/Logs/ModdingLib.log" isTestSource="false" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

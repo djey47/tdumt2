@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<!-- Defines handlers to browse file system or specific package files (bnk) -->
+<!-- TDUMT 2011 - Djey -->
+<browseHandlers>
+  
+  <defaultBrowseHandler class="TDUMT_2.Gui.Common.BrowseHandlers.DirectoryBrowseHandler"/>
+
+  <browseHandler entryRegex="^.*\.bnk$" class="TDUMT_2.Gui.Common.BrowseHandlers.BankBrowseHandler"/>
+    
+</browseHandlers>
