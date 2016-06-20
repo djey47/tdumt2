@@ -52,7 +52,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 15);
+            this.label1.Location = new System.Drawing.Point(12, 17);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 13);
             this.label1.TabIndex = 0;
@@ -62,15 +62,15 @@
             // 
             this.fileTxt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileTxt.Location = new System.Drawing.Point(69, 12);
+            this.fileTxt.Location = new System.Drawing.Point(69, 14);
             this.fileTxt.Name = "fileTxt";
-            this.fileTxt.Size = new System.Drawing.Size(321, 20);
+            this.fileTxt.Size = new System.Drawing.Size(271, 20);
             this.fileTxt.TabIndex = 2;
             // 
             // fileBrowseBtn
             // 
             this.fileBrowseBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileBrowseBtn.Location = new System.Drawing.Point(396, 10);
+            this.fileBrowseBtn.Location = new System.Drawing.Point(346, 12);
             this.fileBrowseBtn.Name = "fileBrowseBtn";
             this.fileBrowseBtn.Size = new System.Drawing.Size(24, 23);
             this.fileBrowseBtn.TabIndex = 1;
@@ -91,7 +91,7 @@
             this.contentsLst.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.contentsLst.Name = "contentsLst";
             this.contentsLst.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.contentsLst.Size = new System.Drawing.Size(454, 290);
+            this.contentsLst.Size = new System.Drawing.Size(404, 246);
             this.contentsLst.TabIndex = 3;
             this.contentsLst.SelectedIndexChanged += new System.EventHandler(this.contentsLst_SelectedIndexChanged);
             this.contentsLst.DragDrop += new System.Windows.Forms.DragEventHandler(this.contentsLst_DragDrop);
@@ -100,7 +100,7 @@
             // loadBtn
             // 
             this.loadBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.loadBtn.Location = new System.Drawing.Point(426, 10);
+            this.loadBtn.Location = new System.Drawing.Point(376, 12);
             this.loadBtn.Name = "loadBtn";
             this.loadBtn.Size = new System.Drawing.Size(43, 23);
             this.loadBtn.TabIndex = 2;
@@ -111,7 +111,7 @@
             // extractBtn
             // 
             this.extractBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.extractBtn.Location = new System.Drawing.Point(15, 429);
+            this.extractBtn.Location = new System.Drawing.Point(15, 379);
             this.extractBtn.Name = "extractBtn";
             this.extractBtn.Size = new System.Drawing.Size(70, 23);
             this.extractBtn.TabIndex = 10;
@@ -122,7 +122,7 @@
             // dirBrowseBtn
             // 
             this.dirBrowseBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.dirBrowseBtn.Location = new System.Drawing.Point(396, 398);
+            this.dirBrowseBtn.Location = new System.Drawing.Point(346, 348);
             this.dirBrowseBtn.Name = "dirBrowseBtn";
             this.dirBrowseBtn.Size = new System.Drawing.Size(24, 23);
             this.dirBrowseBtn.TabIndex = 8;
@@ -134,16 +134,16 @@
             // 
             this.wDirTxt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.wDirTxt.Location = new System.Drawing.Point(97, 400);
+            this.wDirTxt.Location = new System.Drawing.Point(97, 350);
             this.wDirTxt.Name = "wDirTxt";
-            this.wDirTxt.Size = new System.Drawing.Size(293, 20);
+            this.wDirTxt.Size = new System.Drawing.Size(243, 20);
             this.wDirTxt.TabIndex = 7;
             // 
             // label2
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 403);
+            this.label2.Location = new System.Drawing.Point(12, 353);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(79, 13);
             this.label2.TabIndex = 6;
@@ -152,7 +152,7 @@
             // repackBtn
             // 
             this.repackBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.repackBtn.Location = new System.Drawing.Point(176, 429);
+            this.repackBtn.Location = new System.Drawing.Point(176, 379);
             this.repackBtn.Name = "repackBtn";
             this.repackBtn.Size = new System.Drawing.Size(70, 23);
             this.repackBtn.TabIndex = 12;
@@ -169,15 +169,15 @@
             this.bnkFileInfoLbl.ForeColor = System.Drawing.Color.Teal;
             this.bnkFileInfoLbl.Location = new System.Drawing.Point(15, 45);
             this.bnkFileInfoLbl.Name = "bnkFileInfoLbl";
-            this.bnkFileInfoLbl.Size = new System.Drawing.Size(454, 24);
+            this.bnkFileInfoLbl.Size = new System.Drawing.Size(404, 24);
             this.bnkFileInfoLbl.TabIndex = 4;
-            this.bnkFileInfoLbl.Text = "Please load a TDU/TDU2 Bank file...";
+            this.bnkFileInfoLbl.Text = "Please load a TDU/TDU2 bnk file...";
             this.bnkFileInfoLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // openDirBtn
             // 
             this.openDirBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.openDirBtn.Location = new System.Drawing.Point(426, 398);
+            this.openDirBtn.Location = new System.Drawing.Point(376, 348);
             this.openDirBtn.Name = "openDirBtn";
             this.openDirBtn.Size = new System.Drawing.Size(43, 23);
             this.openDirBtn.TabIndex = 9;
@@ -188,7 +188,7 @@
             // extractAllButton
             // 
             this.extractAllButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.extractAllButton.Location = new System.Drawing.Point(91, 429);
+            this.extractAllButton.Location = new System.Drawing.Point(91, 379);
             this.extractAllButton.Name = "extractAllButton";
             this.extractAllButton.Size = new System.Drawing.Size(70, 23);
             this.extractAllButton.TabIndex = 11;
@@ -199,7 +199,7 @@
             // aboutButton
             // 
             this.aboutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.aboutButton.Location = new System.Drawing.Point(402, 429);
+            this.aboutButton.Location = new System.Drawing.Point(352, 379);
             this.aboutButton.Name = "aboutButton";
             this.aboutButton.Size = new System.Drawing.Size(70, 23);
             this.aboutButton.TabIndex = 14;
@@ -214,9 +214,9 @@
             this.packedFileInfoLbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.packedFileInfoLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.packedFileInfoLbl.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.packedFileInfoLbl.Location = new System.Drawing.Point(15, 364);
+            this.packedFileInfoLbl.Location = new System.Drawing.Point(15, 314);
             this.packedFileInfoLbl.Name = "packedFileInfoLbl";
-            this.packedFileInfoLbl.Size = new System.Drawing.Size(454, 24);
+            this.packedFileInfoLbl.Size = new System.Drawing.Size(404, 24);
             this.packedFileInfoLbl.TabIndex = 5;
             this.packedFileInfoLbl.Text = "Please select a packed file...";
             this.packedFileInfoLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -224,7 +224,7 @@
             // dumpButton
             // 
             this.dumpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.dumpButton.Location = new System.Drawing.Point(326, 429);
+            this.dumpButton.Location = new System.Drawing.Point(276, 379);
             this.dumpButton.Name = "dumpButton";
             this.dumpButton.Size = new System.Drawing.Size(70, 23);
             this.dumpButton.TabIndex = 13;
@@ -236,7 +236,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 462);
+            this.ClientSize = new System.Drawing.Size(434, 412);
             this.Controls.Add(this.dumpButton);
             this.Controls.Add(this.packedFileInfoLbl);
             this.Controls.Add(this.aboutButton);

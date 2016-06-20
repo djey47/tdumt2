@@ -39,7 +39,9 @@ namespace TDUMT_2.Gui.Common.BrowseHandlers
             bank.Read();
 
             // Reads contents
-            foreach (PackedFile f in bank.PackedFiles)
+            List<PackedFile> packedFiles = bank.GetPackedFiles();
+
+            foreach (PackedFile f in packedFiles)
             {
                 ListViewItem item = new ListViewItem(f.Name, 4) {Tag = f};
                 items.Add(item);

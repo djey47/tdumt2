@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2012 for Windows Desktop
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModdingLibrary_2", "ModdingLib\ModdingLibrary_2.csproj", "{41363274-6E18-43DA-9D6A-C8A5CB74598F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModdingLibraryTest", "ModdingLibraryTest\ModdingLibraryTest.csproj", "{E02F19CA-2457-423F-B91D-DB1F85607B90}"
@@ -8,17 +8,27 @@ EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{41363274-6E18-43DA-9D6A-C8A5CB74598F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{41363274-6E18-43DA-9D6A-C8A5CB74598F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41363274-6E18-43DA-9D6A-C8A5CB74598F}.Debug|x86.ActiveCfg = Debug|x86
+		{41363274-6E18-43DA-9D6A-C8A5CB74598F}.Debug|x86.Build.0 = Debug|x86
 		{41363274-6E18-43DA-9D6A-C8A5CB74598F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{41363274-6E18-43DA-9D6A-C8A5CB74598F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41363274-6E18-43DA-9D6A-C8A5CB74598F}.Release|x86.ActiveCfg = Release|x86
+		{41363274-6E18-43DA-9D6A-C8A5CB74598F}.Release|x86.Build.0 = Release|x86
 		{E02F19CA-2457-423F-B91D-DB1F85607B90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E02F19CA-2457-423F-B91D-DB1F85607B90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E02F19CA-2457-423F-B91D-DB1F85607B90}.Debug|x86.ActiveCfg = Debug|x86
+		{E02F19CA-2457-423F-B91D-DB1F85607B90}.Debug|x86.Build.0 = Debug|x86
 		{E02F19CA-2457-423F-B91D-DB1F85607B90}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E02F19CA-2457-423F-B91D-DB1F85607B90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E02F19CA-2457-423F-B91D-DB1F85607B90}.Release|x86.ActiveCfg = Release|x86
+		{E02F19CA-2457-423F-B91D-DB1F85607B90}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
