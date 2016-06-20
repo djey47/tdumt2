@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ModdingLibrary_2</RootNamespace>
     <AssemblyName>ModdingLibrary_2</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -80,7 +80,6 @@
     <Compile Include="fileformats\banks\Bnk.cs" />
     <Compile Include="fileformats\banks\PackedFile.cs" />
     <Compile Include="fileformats\banks\PackedFolder.cs" />
-    <Compile Include="fileformats\database\Xmb.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -101,12 +100,6 @@
   <ItemGroup>
     <None Include="Resources\Image1.bmp" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\framework\djelib_2.0\trunk\DjeLibrary_2\DjeLibrary_2.csproj">
-      <Project>{283765cd-4caa-4c89-994a-0a73b60d2fba}</Project>
-      <Name>DjeLibrary_2</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

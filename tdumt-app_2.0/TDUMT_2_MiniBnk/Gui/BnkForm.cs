@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 using DjeLibrary_2.Forms.Dialogs;
-using DjeLibrary_2.Gui.WinForms;
 using DjeLibrary_2.Support.Reports;
 using log4net;
 using ModdingLibrary_2.fileformats.banks;

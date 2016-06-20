@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TDUMT_2.Main</RootNamespace>
     <AssemblyName>TDUMT_2</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -114,7 +114,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Gui\Common\FileBrowsingControl.resx">
       <DependentUpon>FileBrowsingControl.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="GuiResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -172,24 +171,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="res\readme\README FIRST - TDUMT2 beta 2.txt" />
-    <Content Include="res\readme\README FIRST - TDUMT2 beta 3.txt" />
     <Content Include="res\readme\README FIRST - TDUMT2 beta.txt" />
-    <Content Include="res\readme\README FIRST - TDUMT2 MBM.txt" />
     <None Include="res\img\product.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\framework\djelib_2.0\trunk\DjeLibrary_2\DjeLibrary_2.csproj">
-      <Project>{283765cd-4caa-4c89-994a-0a73b60d2fba}</Project>
-      <Name>DjeLibrary_2</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\tdumodlib_2.0\trunk\ModdingLib\ModdingLibrary_2.csproj">
-      <Project>{41363274-6e18-43da-9d6a-c8a5cb74598f}</Project>
-      <Name>ModdingLibrary_2</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
