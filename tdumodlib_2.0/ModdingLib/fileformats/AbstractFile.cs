@@ -26,29 +26,27 @@ namespace ModdingLibrary_2.fileformats
         /// Reads current file and stores information into memory
         /// </summary>
         public abstract void Read();
-        
+
         /// <summary>
-        /// Save current file to disk
+        /// Saves current file to disk
         /// </summary>
         public abstract void Save();
 
         /// <summary>
-        /// Dumps current object information to logs
-        /// </summary>
-        public abstract void Dump();
-
-        /// <summary>
-        /// Save current data to a new file on disk
+        /// Saves current data to a new file on disk
         /// </summary>
         /// <param name="fileName"></param>
         public void SaveAs(string fileName)
         {
-            string currentFileName = Name.Clone() as string;
-
             // Saves as new file
             Name = fileName;
             Save();
         }
+
+        /// <summary>
+        /// Dumps file contents to DUMP_LOG logger
+        /// </summary>
+        public abstract void Dump();
         #endregion
     }
 }

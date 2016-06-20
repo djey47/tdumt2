@@ -1,4 +1,4 @@
-﻿@ECHO OFF
+@ECHO OFF
 ECHO Will package trunk only !
 ECHO Release build OK in VS2012 ?
 PAUSE

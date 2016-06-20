@@ -27,11 +27,6 @@
         public uint Id { get; set; }
 
         /// <summary>
-        /// Order in packed data section
-        /// </summary>
-        //public uint Order { get; set; }
-
-        /// <summary>
         /// Magic data (???)
         /// </summary>
         public ulong Magic { get; set; }
