@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Windows.Forms;
-using TDUMT_2_MiniXmb.Gui;
+using log4net.Config;
+using TDUMT_2.MiniXmb.Gui;
 
-namespace TDUMT_2_MiniXmb
+namespace TDUMT_2.MiniXmb
 {
     static class Program
     {
@@ -12,10 +12,15 @@ namespace TDUMT_2_MiniXmb
         /// Point d'entrée principal de l'application.
         /// </summary>
         [STAThread]
-        static void Main()
+        public static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            // Logging configuration
+            string configFile = Directory.GetCurrentDirectory() + @"\Conf\log4net.xml";
+            XmlConfigurator.Configure(new FileInfo(configFile));
+
             Application.Run(new XmbForm());
         }
     }

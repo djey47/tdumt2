@@ -307,7 +307,7 @@ namespace ModdingLibrary_2.fileformats.banks
                 if (_TypeMappingSectionAddr != 0)
                 {
                     _TypeMappingSection = _UpdateTypeMappingSection();
-                }
+            }
                 _TreeSection = _UpdateTreeSection();
                 _OrderSection = _UpdateOrderSection();
                 _Unknown2Section = new Section();
@@ -819,9 +819,9 @@ namespace ModdingLibrary_2.fileformats.banks
                        {
                            address = 0,
                            length = (uint)headerData.Length,
-                            checksum = _ComputeChecksum(headerData),
-                            data = headerData
-                        };
+                                            checksum = _ComputeChecksum(headerData),
+                                            data = headerData
+                                        };
         }
 
         /// <summary>
@@ -937,8 +937,10 @@ namespace ModdingLibrary_2.fileformats.banks
                 // Recursive call for children
                 if (entry.Children != null)
                 {
-                    foreach (PackedFolder pf in entry.Children)
+                    // Entries must be processed by path else game may crash 
+                    foreach (PackedFolder pf in entry.Children.OrderBy(key => key.FullPath))
                     {
+                        _Log.Debug("Processing child: " + pf.FullPath);
                         _UpdatePackedEntry(memWriter, pf);
                     }
                 }
@@ -971,7 +973,8 @@ namespace ModdingLibrary_2.fileformats.banks
 
             using (BinaryWriter memWriter = new BinaryWriter(new MemoryStream(data)))
             {
-                foreach( KeyValuePair<uint, PackedFile> item in _PackedFileByIdIndex.OrderBy(key => key.Value.Id))
+                // Entries must be processed by path else game may crash 
+                foreach( KeyValuePair<uint, PackedFile> item in _PackedFileByIdIndex.OrderBy(key => key.Value.FullPath))
                 {
                     PackedFile pf = item.Value;
 
@@ -1010,7 +1013,8 @@ namespace ModdingLibrary_2.fileformats.banks
             byte[] data = new byte[_MAPPING_ENTRY_LENGTH * _PackedCount];
             using (BinaryWriter memWriter = new BinaryWriter(new MemoryStream(data)))
             {
-                foreach (KeyValuePair<uint, PackedFile> packedFile in _PackedFileByIdIndex.OrderBy(key => key.Value.Id))
+                // Entries must be processed by path else game may crash 
+                foreach (KeyValuePair<uint, PackedFile> packedFile in _PackedFileByIdIndex.OrderBy(key => key.Value.FullPath))
                 {
                     memWriter.Write(packedFile.Value.Type);
                 }
@@ -1258,27 +1262,27 @@ namespace ModdingLibrary_2.fileformats.banks
                     _ReadHeaderSection(reader);
 
                     // Unk2 is optional and to be understood still
-                    if (_Unknown2SectionAddr != 0)
-                    {
+                if (_Unknown2SectionAddr != 0)
+                {
                         _ReadUnknown2Section(reader);
-                    }
+                }
 
                     _ReadPackedData(reader);
                 }
-            }
+                }
             catch (Exception e)
-            {
+                {
                 throw new Exception("BNK read error, maybe uncompatible format", e);
-            }
-        }
+                }
+                }
 
         /// <summary>
         /// Saves current BNK file to disk
         /// </summary>
         public override void Save()
-        {
+                {
             try
-            {
+                {
                 using (BinaryWriter writer = new BinaryWriter(new FileStream(Name, FileMode.OpenOrCreate, FileAccess.ReadWrite)))
                 {
                     _WriteSection(writer, _HeaderSection, _BlockSize1);
