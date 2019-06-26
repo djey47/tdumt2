@@ -486,8 +486,8 @@ namespace ModdingLibrary_2.fileformats.banks
                 // Sizes
                 _FileSize = dataReader.ReadUInt32();
                 _PackedSize = dataReader.ReadUInt32();
-                _BlockSize1 = dataReader.ReadUInt32();
-                _BlockSize2 = dataReader.ReadUInt32();
+                _BlockSize1 = dataReader.ReadUInt32(); // 4 or 32 only (all tdu2-last update dlc 2 bnk scanned)
+                _BlockSize2 = dataReader.ReadUInt32(); // always 16 (all tdu2-last update dlc 2 bnk scanned)
 
                 _PackedCount = dataReader.ReadUInt32();
                 _Year = dataReader.ReadUInt32();
