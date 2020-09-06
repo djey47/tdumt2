@@ -64,16 +64,16 @@
     <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Fesersoft.Hashing.crc32">
-      <HintPath>..\..\..\..\framework\djelib_2.0\trunk\DjeLibrary_2\lib\Fesersoft.Hashing.crc32.dll</HintPath>
-    </Reference>
     <Reference Include="log4net">
-      <HintPath>..\..\..\..\framework\djelib_2.0\trunk\DjeLibrary_2\lib\log4net.dll</HintPath>
+      <HintPath>..\..\packages\log4net.2.0.9\lib\net40\log4net.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
+    <Reference Include="Fesersoft.Hashing.crc32">
+      <HintPath>..\..\3rdparty\Fesersoft.Hashing.crc32.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="fileformats\AbstractFile.cs" />
@@ -100,6 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Image1.bmp" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\framework\djelib_2.0\trunk\DjeLibrary_2\DjeLibrary_2.csproj">

@@ -1,4 +1,8 @@
-﻿djelib_2.0/.idea/
+﻿*.sln
+.vs*/
+packages/
+packages.config
+djelib_2.0/.idea/
 djelib_2.0/DjeLibrary_2/bin/
 djelib_2.0/DjeLibrary_2/lib/
 djelib_2.0/DjeLibrary_2/obj/

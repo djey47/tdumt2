@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\packages\NUnit.3.12.0\build\NUnit.props" Condition="Exists('..\..\packages\NUnit.3.12.0\build\NUnit.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -45,16 +46,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Fesersoft.Hashing.crc32, Version=1.0.828.24302, Culture=neutral">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\Fesersoft.Hashing.crc32.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\log4net.dll</HintPath>
-    </Reference>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
@@ -63,6 +54,17 @@
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\packages\NUnit.3.12.0\lib\net40\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\..\packages\log4net.2.0.9\lib\net40\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Fesersoft.Hashing.crc32">
+      <HintPath>..\..\3rdparty\Fesersoft.Hashing.crc32.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Collections\ListHelper.cs" />
@@ -128,6 +130,10 @@
     <None Include="Resources\gfx\prepare32.png" />
     <None Include="Resources\gfx\Caution_32px.png" />
     <Content Include="Resources\config\log4net\AppSample.xml" />
+    <None Include="..\..\tdumodlib_2.0\ModdingLib\ModdingLibrary_2.csproj">
+      <Link>ModdingLibrary_2.csproj</Link>
+    </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="xsd\Support\Logging\AppConfigLog4net.xsd">
