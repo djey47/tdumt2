@@ -64,6 +64,7 @@
     <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Reference Include="log4net">
       <HintPath>..\..\packages\log4net.2.0.9\lib\net40\log4net.dll</HintPath>
     </Reference>
