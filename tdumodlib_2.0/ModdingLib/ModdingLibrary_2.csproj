@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ModdingLibrary_2</RootNamespace>
     <AssemblyName>ModdingLibrary_2</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -103,7 +103,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\framework\djelib_2.0\trunk\DjeLibrary_2\DjeLibrary_2.csproj">
+    <ProjectReference Include="..\..\djelib_2.0\DjeLibrary_2\DjeLibrary_2.csproj">
       <Project>{283765cd-4caa-4c89-994a-0a73b60d2fba}</Project>
       <Name>DjeLibrary_2</Name>
     </ProjectReference>
