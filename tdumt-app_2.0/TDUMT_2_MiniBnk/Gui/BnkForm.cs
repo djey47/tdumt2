@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
-using DjeLibrary_2.Forms.Dialogs;
 using DjeLibrary_2.Gui.WinForms;
 using DjeLibrary_2.Support.Reports;
 using log4net;
 using ModdingLibrary_2.fileformats.banks;
+using TDUMT_2.MiniBnkManager.Support;
 
 namespace TDUMT_2.MiniBnkManager.Gui
 {
@@ -17,7 +16,7 @@ namespace TDUMT_2.MiniBnkManager.Gui
         /// <summary>
         /// Directory level to start when creating folders
         /// </summary>
-        private const int _DIRECTORY_LVL = 5;
+        private const int DirectoryLvl = 5;
         #endregion
 
         #region Members
@@ -29,7 +28,7 @@ namespace TDUMT_2.MiniBnkManager.Gui
         /// <summary>
         /// Internal logger
         /// </summary>
-        private static readonly ILog _Log = LogManager.GetLogger(typeof(BnkForm));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(BnkForm));
         #endregion
 
         public BnkForm()
@@ -43,8 +42,9 @@ namespace TDUMT_2.MiniBnkManager.Gui
         /// </summary>
         private void _InitializeContents()
         {
-            // Default work directory
-            wDirTxt.Text = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\work";
+            // Default work directory if unavailable in settings
+            var defaultWorkDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "work");
+            wDirTxt.Text = AppConfig.Instance.WorkDirectory ?? defaultWorkDirectory;
 
             // File info
             _UpdateBnkInfo();
@@ -87,7 +87,7 @@ namespace TDUMT_2.MiniBnkManager.Gui
             } 
             catch (Exception e)
             {
-                _Log.Error(FailureHandler.GetStackTrace(e));
+                Log.Error(FailureHandler.GetStackTrace(e));
                 MessageBox.Show(this, e.Message);
             }
             finally
@@ -105,6 +105,9 @@ namespace TDUMT_2.MiniBnkManager.Gui
             if (dr == DialogResult.OK)
             {
                 wDirTxt.Text = folderBrowserDlg.SelectedPath;
+            
+                // Store in settings
+                AppConfig.Instance.WorkDirectory = folderBrowserDlg.SelectedPath;
             }
         }
 
@@ -118,7 +121,7 @@ namespace TDUMT_2.MiniBnkManager.Gui
                 }
                 catch (Exception e)
                 {
-                    _Log.Error(FailureHandler.GetStackTrace(e));
+                    Log.Error(FailureHandler.GetStackTrace(e));
                     MessageBox.Show(this, e.Message);
                 }
             }
@@ -162,7 +165,7 @@ namespace TDUMT_2.MiniBnkManager.Gui
                         }
                         catch (Exception e)
                         {
-                            _Log.Error(FailureHandler.GetStackTrace(e));
+                            Log.Error(FailureHandler.GetStackTrace(e));
                             MessageBox.Show(this, e.Message);
                         }
                         finally
@@ -194,7 +197,7 @@ namespace TDUMT_2.MiniBnkManager.Gui
                 }
                 catch (Exception ex)
                 {
-                    _Log.Error(FailureHandler.GetStackTrace(ex));
+                    Log.Error(FailureHandler.GetStackTrace(ex));
                     MessageBox.Show(this, ex.Message);
                 }
             }
@@ -203,14 +206,8 @@ namespace TDUMT_2.MiniBnkManager.Gui
 
         private void contentsLst_DragEnter(object sender, DragEventArgs e)
         {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
-            {
-                e.Effect = DragDropEffects.Copy;
-            }
-            else
-            {
-                e.Effect = DragDropEffects.None;
-            }
+            e.Effect = e.Data.GetDataPresent(DataFormats.FileDrop) ?
+                DragDropEffects.Copy : DragDropEffects.None;
         }
 
         private void contentsLst_DragDrop(object sender, DragEventArgs e)
@@ -250,7 +247,7 @@ namespace TDUMT_2.MiniBnkManager.Gui
                 }
                 catch (Exception e)
                 {
-                    _Log.Error(FailureHandler.GetStackTrace(e));
+                    Log.Error(FailureHandler.GetStackTrace(e));
                     MessageBox.Show(this, e.Message);
                 }
             }
@@ -286,7 +283,7 @@ namespace TDUMT_2.MiniBnkManager.Gui
                 }
                 catch (Exception ex)
                 {
-                    _Log.Error(FailureHandler.GetStackTrace(ex));
+                    Log.Error(FailureHandler.GetStackTrace(ex));
                     MessageBox.Show(this, ex.Message);
                 }
                 finally
@@ -407,8 +404,7 @@ namespace TDUMT_2.MiniBnkManager.Gui
                     // Has it been selected ?
                     if(contentsLst.SelectedIndices.Contains((int)pf.Id))
                     {
-                        string targetFilename = (currentPath + @"\" + pf.Name);
-
+                        string targetFilename = Path.Combine(currentPath, pf.Name);
                         Bnk.Extract(pf, targetFilename);
                     }
                 }
@@ -416,7 +412,7 @@ namespace TDUMT_2.MiniBnkManager.Gui
             else
             {
                 // Creates folder only when starting from interesting level, does not create extension directories
-                if (lvl >= _DIRECTORY_LVL && !packedEntry.Name.StartsWith("."))
+                if (lvl >= DirectoryLvl && !packedEntry.Name.StartsWith("."))
                 {
                     currentPath += (@"\" + packedEntry.Name);
                     
@@ -434,5 +430,19 @@ namespace TDUMT_2.MiniBnkManager.Gui
             }
         }
         #endregion
+
+        private void BnkForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            // Save settings before exit
+            AppConfig.Instance.Save();
+        }
+
+        private void wDirTxt_Leave(object sender, EventArgs e)
+        {
+            TextBox tb = (TextBox) sender;
+            
+            // Store in settings
+            AppConfig.Instance.WorkDirectory = tb.Text;
+        }
     }
 }

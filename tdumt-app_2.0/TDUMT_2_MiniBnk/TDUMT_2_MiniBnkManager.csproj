@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TDUMT_2.MiniBnkManager</RootNamespace>
     <AssemblyName>MiniBnkManager</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -36,6 +36,9 @@
     <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\..\packages\log4net.2.0.9\lib\net40\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -61,6 +64,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Support\AppConfig.cs" />
     <EmbeddedResource Include="GuiResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>GuiResources.Designer.cs</LastGenOutput>
@@ -99,11 +103,11 @@
     <None Include="res\img\product.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\framework\djelib_2.0\trunk\DjeLibrary_2\DjeLibrary_2.csproj">
+    <ProjectReference Include="..\..\djelib_2.0\DjeLibrary_2\DjeLibrary_2.csproj">
       <Project>{283765cd-4caa-4c89-994a-0a73b60d2fba}</Project>
       <Name>DjeLibrary_2</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\tdumodlib_2.0\trunk\ModdingLib\ModdingLibrary_2.csproj">
+    <ProjectReference Include="..\..\tdumodlib_2.0\ModdingLib\ModdingLibrary_2.csproj">
       <Project>{41363274-6E18-43DA-9D6A-C8A5CB74598F}</Project>
       <Name>ModdingLibrary_2</Name>
     </ProjectReference>

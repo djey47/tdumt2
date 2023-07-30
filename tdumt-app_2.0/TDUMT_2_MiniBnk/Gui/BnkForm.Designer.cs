@@ -54,14 +54,13 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 13);
+            this.label1.Size = new System.Drawing.Size(57, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "Bank file:";
             // 
             // fileTxt
             // 
-            this.fileTxt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.fileTxt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.fileTxt.Location = new System.Drawing.Point(69, 12);
             this.fileTxt.Name = "fileTxt";
             this.fileTxt.Size = new System.Drawing.Size(321, 20);
@@ -81,17 +80,15 @@
             // contentsLst
             // 
             this.contentsLst.AllowDrop = true;
-            this.contentsLst.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.contentsLst.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.contentsLst.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.contentsLst.FormattingEnabled = true;
-            this.contentsLst.ItemHeight = 11;
+            this.contentsLst.ItemHeight = 14;
             this.contentsLst.Location = new System.Drawing.Point(15, 68);
             this.contentsLst.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.contentsLst.Name = "contentsLst";
             this.contentsLst.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.contentsLst.Size = new System.Drawing.Size(454, 290);
+            this.contentsLst.Size = new System.Drawing.Size(454, 284);
             this.contentsLst.TabIndex = 3;
             this.contentsLst.SelectedIndexChanged += new System.EventHandler(this.contentsLst_SelectedIndexChanged);
             this.contentsLst.DragDrop += new System.Windows.Forms.DragEventHandler(this.contentsLst_DragDrop);
@@ -132,12 +129,12 @@
             // 
             // wDirTxt
             // 
-            this.wDirTxt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.wDirTxt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.wDirTxt.Location = new System.Drawing.Point(97, 400);
             this.wDirTxt.Name = "wDirTxt";
             this.wDirTxt.Size = new System.Drawing.Size(293, 20);
             this.wDirTxt.TabIndex = 7;
+            this.wDirTxt.Leave += new System.EventHandler(this.wDirTxt_Leave);
             // 
             // label2
             // 
@@ -145,7 +142,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 403);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 13);
+            this.label2.Size = new System.Drawing.Size(87, 15);
             this.label2.TabIndex = 6;
             this.label2.Text = "Work directory:";
             // 
@@ -162,8 +159,7 @@
             // 
             // bnkFileInfoLbl
             // 
-            this.bnkFileInfoLbl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.bnkFileInfoLbl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.bnkFileInfoLbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.bnkFileInfoLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bnkFileInfoLbl.ForeColor = System.Drawing.Color.Teal;
@@ -209,8 +205,7 @@
             // 
             // packedFileInfoLbl
             // 
-            this.packedFileInfoLbl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.packedFileInfoLbl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.packedFileInfoLbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.packedFileInfoLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.packedFileInfoLbl.ForeColor = System.Drawing.Color.DarkSlateGray;
@@ -255,9 +250,9 @@
             this.Controls.Add(this.label1);
             this.Name = "BnkForm";
             this.Text = "TDUMT II - Mini Bnk Manager";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.BnkForm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
