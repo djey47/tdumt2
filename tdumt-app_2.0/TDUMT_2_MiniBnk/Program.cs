@@ -18,12 +18,14 @@ namespace TDUMT_2.MiniBnkManager
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            var configPath = Path.Combine(Directory.GetCurrentDirectory(), "Conf");
+
             // Logging configuration
-            string logConfigFile = Path.Combine(Directory.GetCurrentDirectory(), "Conf", "log4net.xml");
+            var logConfigFile = Path.Combine(configPath, "log4net.xml");
             XmlConfigurator.Configure(new FileInfo(logConfigFile));
             
             // App config
-            var appConfigFile = Path.Combine(Directory.GetCurrentDirectory(), "Conf", "tdumt2_MBM.xml");
+            var appConfigFile = Path.Combine(configPath, "tdumt2_MBM.xml");
             AppConfig.Instance.ConfigFilePath = appConfigFile;
             AppConfig.Instance.Load();
             
