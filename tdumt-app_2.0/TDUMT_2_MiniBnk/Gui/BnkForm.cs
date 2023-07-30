@@ -8,6 +8,7 @@ using DjeLibrary_2.Gui.WinForms;
 using DjeLibrary_2.Support.Reports;
 using log4net;
 using ModdingLibrary_2.fileformats.banks;
+using TDUMT_2.MiniBnkManager.Support;
 
 namespace TDUMT_2.MiniBnkManager.Gui
 {
@@ -43,8 +44,9 @@ namespace TDUMT_2.MiniBnkManager.Gui
         /// </summary>
         private void _InitializeContents()
         {
-            // Default work directory
-            wDirTxt.Text = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\work";
+            // Default work directory if unavailable in settings
+            var defaultWorkDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "work");
+            wDirTxt.Text = AppConfig.Instance.WorkDirectory ?? defaultWorkDirectory;
 
             // File info
             _UpdateBnkInfo();
@@ -105,6 +107,9 @@ namespace TDUMT_2.MiniBnkManager.Gui
             if (dr == DialogResult.OK)
             {
                 wDirTxt.Text = folderBrowserDlg.SelectedPath;
+            
+                // Store in settings
+                AppConfig.Instance.WorkDirectory = folderBrowserDlg.SelectedPath;
             }
         }
 
@@ -434,5 +439,19 @@ namespace TDUMT_2.MiniBnkManager.Gui
             }
         }
         #endregion
+
+        private void BnkForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            // Save settings before exit
+            AppConfig.Instance.Save();
+        }
+
+        private void wDirTxt_Leave(object sender, EventArgs e)
+        {
+            TextBox tb = (TextBox) sender;
+            
+            // Store in settings
+            AppConfig.Instance.WorkDirectory = tb.Text;
+        }
     }
 }

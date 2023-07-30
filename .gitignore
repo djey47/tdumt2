@@ -1,4 +1,6 @@
-﻿*.sln
+﻿.idea/
+*.user
+*.sln
 .vs*/
 packages/
 packages.config
