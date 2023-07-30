@@ -219,7 +219,7 @@ namespace TDUMT_2.MiniBnkManager.Gui
             if (fileList.Length == 1)
             {
                 fileTxt.Text = fileList[0];
-                loadBtn_Click(sender, new EventArgs());
+                loadBtn_Click(sender, EventArgs.Empty);
             }
         }
 
@@ -394,19 +394,14 @@ namespace TDUMT_2.MiniBnkManager.Gui
         /// <param name="currentPath"></param>
         private void _ParseTree(PackedFolder packedEntry, int lvl, string currentPath)
         {
-            if (packedEntry.GetType() == typeof(PackedFile))
+            if (packedEntry is PackedFile pf)
             {
                 // Extracts file
-                PackedFile pf = packedEntry as PackedFile;
-
-                if (pf != null)
+                // Has it been selected ?
+                if(contentsLst.SelectedIndices.Contains((int)pf.Id))
                 {
-                    // Has it been selected ?
-                    if(contentsLst.SelectedIndices.Contains((int)pf.Id))
-                    {
-                        string targetFilename = Path.Combine(currentPath, pf.Name);
-                        Bnk.Extract(pf, targetFilename);
-                    }
+                    string targetFilename = Path.Combine(currentPath, pf.Name);
+                    Bnk.Extract(pf, targetFilename);
                 }
             }
             else
