@@ -129,49 +129,49 @@ namespace TDUMT_2.MiniBnkManager.Gui
 
         private void repackBtn_Click(object sender, EventArgs ea)
         {
-            if (_Bank != null)
-            {
-                folderBrowserDlg.Description = "Select a directory to repack...";
+            if (_Bank == null) return;
+            
+            folderBrowserDlg.Description = "Select a directory to repack...";
+            folderBrowserDlg.SelectedPath = AppConfig.Instance.WorkDirectory;
 
-                DialogResult dr = folderBrowserDlg.ShowDialog(this);
+            DialogResult dr = folderBrowserDlg.ShowDialog(this);
+
+            if (dr == DialogResult.OK)
+            {
+                string bnkDir = folderBrowserDlg.SelectedPath;
+                string[] splittedPath = bnkDir.Split('\\');
+                string bnkDefaultName = splittedPath[splittedPath.Length - 1];
+
+                // Target BNK selection
+                saveFileDialog.Filter = "TDU banks (*.bnk)|*.bnk";
+                saveFileDialog.Title = "Repack to BNK file...";
+                saveFileDialog.FileName = bnkDefaultName;
+
+                dr = saveFileDialog.ShowDialog(this);
 
                 if (dr == DialogResult.OK)
                 {
-                    string bnkDir = folderBrowserDlg.SelectedPath;
-                    string[] splittedPath = bnkDir.Split('\\');
-                    string bnkDefaultName = splittedPath[splittedPath.Length - 1];
-
-                    // Target BNK selection
-                    saveFileDialog.Filter = "TDU banks (*.bnk)|*.bnk";
-                    saveFileDialog.Title = "Repack to BNK file...";
-                    saveFileDialog.FileName = bnkDefaultName;
-
-                    dr = saveFileDialog.ShowDialog(this);
-
-                    if (dr == DialogResult.OK)
+                    try
                     {
-                        try
-                        {
-                            Cursor = Cursors.WaitCursor;
+                        Cursor = Cursors.WaitCursor;
 
-                            // Updates Bnk contents
-                            _Bank.Repack(bnkDir);
-                            // Commit to disk
-                            _Bank.SaveAs(saveFileDialog.FileName);
-                            // Reloads current file
-                            _Bank.Read();
+                        // Updates Bnk contents
+                        _Bank.Repack(bnkDir);
+                        // Commit to disk
+                        _Bank.SaveAs(saveFileDialog.FileName);
+                        // Reloads current file
+                        _Bank.Read();
 
-                            MessageBox.Show(this, "Repack Succeeded!");
-                        }
-                        catch (Exception e)
-                        {
-                            Log.Error(FailureHandler.GetStackTrace(e));
-                            MessageBox.Show(this, e.Message);
-                        }
-                        finally
-                        {
-                            Cursor = Cursors.Default;
-                        }
+                        MessageBox.Show(this, "Repack Succeeded!");
+                    }
+                    catch (Exception e)
+                    {
+                        Log.Error(FailureHandler.GetStackTrace(e));
+                        MessageBox.Show(this, e.Message);
+                    }
+                    finally
+                    {
+                        Cursor = Cursors.Default;
                     }
                 }
             }
