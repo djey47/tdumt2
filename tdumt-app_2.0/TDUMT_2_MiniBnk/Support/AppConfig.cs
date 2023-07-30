@@ -1,5 +1,4 @@
-﻿using System.Configuration;
-using DjeLibrary_2.Support.Settings;
+﻿using DjeLibrary_2.Support.Settings;
 
 namespace TDUMT_2.MiniBnkManager.Support
 {
