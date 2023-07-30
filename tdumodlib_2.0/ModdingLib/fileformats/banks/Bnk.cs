@@ -29,7 +29,7 @@ namespace ModdingLibrary_2.fileformats.banks
         /// <summary>
         /// Maximum size for packed files names hierarchy
         /// </summary>
-        private const int _PACKED_TREE_MAX_SIZE = 65536;
+        private const int _PACKED_TREE_MAX_SIZE = 1048576;
 
         /// <summary>
         /// Size of each section header, in bytes (section length, crc)
@@ -63,6 +63,13 @@ namespace ModdingLibrary_2.fileformats.banks
         /// </summary>
         //private const string _PADDING_STRING = "STNICC2000 RULEZPADDING DATAS...-ORIC AND ATARI--COOL  MACHINES-";
         private const string _PADDING_STRING = "TDUMTII-UNBIN-BRAVO LES POTES-EPIC-";
+
+        /// <summary>
+        /// Mask used to compute properly count of packed files within a packed directory (when more than 127 items)
+        /// (short) Count = (short) readCount XOR (short) mask
+        /// FIXME This has to be clarified
+        /// </summary>
+        private const short _HIGH_PACKED_FILE_COUNT_MASK = 0x380;
         #endregion
 
         #region Technical members
@@ -690,20 +697,36 @@ namespace ModdingLibrary_2.fileformats.banks
                 // Name length
                 int length = (256 - localReader.ReadByte());
                 // Children count
-                int childrenCount = localReader.ReadByte();
-                // Fix :  if next char = 01, just ignore it
-                if (localReader.ReadByte() != 1)
+                // Warning! children count may be expressed either with either 1 or 2 bytes (to 127 then 128 to 32767) 
+                short childrenCount = localReader.ReadByte();
+                
+                // Next byte: either
+                // - a dot char if we have an extension group
+                // - or first char of directory name
+                // - or the 2nd byte of children count (where values 1 or 2 have been found)
+                // TODO need also write support....
+                int nextByte = localReader.ReadByte();
+                if (nextByte < 0x2E || nextByte > 0x7A) // Typically processing non character values
                 {
-                    localReader.BaseStream.Seek(-1, SeekOrigin.Current); 
+                    _Log.Debug($"(READER) WARN: next byte={nextByte}, recomputing children count with {_HIGH_PACKED_FILE_COUNT_MASK:X} mask...");
+                    localReader.BaseStream.Seek(-2, SeekOrigin.Current);
+                    short magicChildrenCount = localReader.ReadInt16();
+                    childrenCount = (short) (magicChildrenCount ^ _HIGH_PACKED_FILE_COUNT_MASK);
+                    _Log.Debug($"(READER)       ... effective childrenCount={childrenCount}");
                 }
-
+                else
+                {
+                    localReader.BaseStream.Seek(-1, SeekOrigin.Current);
+                }
+                
                 // Name
                 byte[] entryNameBytes = localReader.ReadBytes(length);
                 string entryName = Encoding.ASCII.GetString(entryNameBytes);
 
                 // Folder creation
                 f = new PackedFolder { Children = new List<PackedFolder>(childrenCount), Name = entryName, FullPath = (parentPath + "/" + entryName) };
-                _Log.Debug("(FOLDER) " + entryName + " == " + f.FullPath);
+                _Log.Debug($"(READER) creating folder entry {entryName} <> {f.FullPath},");
+                _Log.Debug($"         containing {childrenCount} children entries");
 
                 // Gets extension for children files
                 if (entryName.StartsWith("."))
@@ -730,10 +753,11 @@ namespace ModdingLibrary_2.fileformats.banks
                 // File creation 
                 uint id = (uint)_PackedFileByIdIndex.Count;
                 f = new PackedFile { Name = string.Concat(entryName, extension), FullPath = (parentPath + "/" + entryName), Id = id };
-                _Log.Debug("(FILE) " + entryName + " == " + f.FullPath);
 
                 // Index update
-                _PackedFileByIdIndex.Add(id, f as PackedFile);
+                _PackedFileByIdIndex.Add(id, (PackedFile) f);
+
+                _Log.Debug($"(READER)    - Created file entry ({id}) {entryName}{extension}");
             }
 
             return f;
@@ -928,8 +952,17 @@ namespace ModdingLibrary_2.fileformats.banks
                 int length = entry.Name.Length;
                 memWriter.Write((byte) (256 - length));
                 // Children entries count
-                byte childrenCount = (byte) entry.Children.Count;
-                memWriter.Write(childrenCount);
+                short childrenCount = (short) entry.Children.Count;
+                if (childrenCount > 127)
+                {
+                    // FIXME See comments in read part for high children count
+                    short magicChildrenCount = (short) (childrenCount ^ _HIGH_PACKED_FILE_COUNT_MASK);
+                    memWriter.Write(magicChildrenCount);
+                }
+                else
+                {
+                    memWriter.Write(childrenCount);
+                }
                 // Name
                 byte[] entryNameBytes = Encoding.ASCII.GetBytes(entry.Name);
                 memWriter.Write(entryNameBytes);
@@ -940,7 +973,7 @@ namespace ModdingLibrary_2.fileformats.banks
                     // Entries must be processed by path else game may crash 
                     foreach (PackedFolder pf in entry.Children.OrderBy(key => key.FullPath))
                     {
-                        _Log.Debug("Processing child: " + pf.FullPath);
+                        _Log.Debug($"(WRITER) Processing child folder: {pf.FullPath}");
                         _UpdatePackedEntry(memWriter, pf);
                     }
                 }
