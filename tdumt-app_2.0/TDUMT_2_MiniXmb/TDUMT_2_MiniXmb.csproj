@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TDUMT_2.MiniXmb</RootNamespace>
     <AssemblyName>MiniXmb</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -52,7 +52,7 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-</ItemGroup>
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="GuiResources.Designer.cs">
       <DependentUpon>GuiResources.resx</DependentUpon>
@@ -105,11 +105,11 @@
     <None Include="res\img\product.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\framework\djelib_2.0\trunk\DjeLibrary_2\DjeLibrary_2.csproj">
+    <ProjectReference Include="..\..\djelib_2.0\DjeLibrary_2\DjeLibrary_2.csproj">
       <Project>{283765cd-4caa-4c89-994a-0a73b60d2fba}</Project>
       <Name>DjeLibrary_2</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\tdumodlib_2.0\trunk\ModdingLib\ModdingLibrary_2.csproj">
+    <ProjectReference Include="..\..\tdumodlib_2.0\ModdingLib\ModdingLibrary_2.csproj">
       <Project>{41363274-6E18-43DA-9D6A-C8A5CB74598F}</Project>
       <Name>ModdingLibrary_2</Name>
     </ProjectReference>

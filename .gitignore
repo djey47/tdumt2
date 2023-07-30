@@ -1,6 +1,6 @@
 ﻿.idea/
-*.user
 *.sln
+*.sln.DotSettings.user
 .vs*/
 packages/
 packages.config
