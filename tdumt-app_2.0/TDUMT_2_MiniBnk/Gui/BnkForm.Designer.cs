@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BnkForm));
             this.label1 = new System.Windows.Forms.Label();
             this.fileTxt = new System.Windows.Forms.TextBox();
             this.fileBrowseBtn = new System.Windows.Forms.Button();
@@ -248,6 +249,7 @@
             this.Controls.Add(this.fileBrowseBtn);
             this.Controls.Add(this.fileTxt);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "BnkForm";
             this.Text = "TDUMT II - Mini Bnk Manager";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.BnkForm_FormClosed);
